@@ -1,0 +1,15 @@
+Few tests are skipped
+base.html code has some prolem when trying to 
+show the presently logged in user
+
+base.html is copied directlt from the site
+not coded manually
+havr to look into it when theres time
+
+create base_accounts.html {skipped}
+	to refactor login.html and signup.html
+
+create custom template tags {skipped}
+
+password reset{skipped}
+	there is inbuild classes for that tho
