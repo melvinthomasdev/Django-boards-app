@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j#$_nrgdu2l3^sj^4&z%han63sl3oq90g=p3f5gviq0&5$%-c('
 
+SECRET_KEY = 'j#$_nrgdu2l3^sj^4&z%han63sl3oq90g=p3f5gviq0&5$%-c('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,22 +133,3 @@ LOGIN_REDIRECT_URL='home'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-from decouple import config, Csv
-import dj_database_url
-
-SECRET_KEY=config('SECRET_KEY')
-DEBUG=config('DEBUG',default=False, cast=bool)
-ALLOWED_HOSTS= config('ALLOWED_HOSTS', cast=Csv())
-DATABASES = {
-    'default': dj_database_url.config(default= config('DATABASE_URL')
-        )
-}
-
-
-import dj_database_url
-
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL='/static'
-STATICFILES_STORAGE='whitenoise.django.GzipManifestStaticFilesStorage'
